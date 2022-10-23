@@ -15,7 +15,7 @@ Node Development Kit or NDK, is a simple shell script that will automatically in
 Firstly clone the repository
 
 ```sh
-$ git clone https://github.com/auth-xyz/ndk.git
+$ gh repo clone kimide/ndk
 $ cd ndk/
 ```
 
