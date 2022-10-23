@@ -1,7 +1,6 @@
 #! /bin/bash
 clear
 
-
 # Declaring variables
 declare -Ag deps=([node]="nodejs" [npm]="npm" [git]="git") # Pre-Defined dependencies
 declare -Ag package_managers=([arch]="pacman -Sy" [debian]="apt-get install" [fedora]="dnf install")
@@ -18,6 +17,11 @@ declare -A compatible_pm=([arch]="pacman -Sy " [debian]="apt-get install ");
 
 declare -ag compatible_editors=("vscode" "neovim" "sublime")
 declare -ag compatible_linux=("arch" "debian")
+
+if [ "$EUID" -ne 0 ]
+  then echo -e "${red}[ERROR] : USER_NOT_SUDO ( https://kimide.github.io/ndk/errors/000x4.html for more information. )"
+  exit
+fi
 
 function install_deps() {
   for pm in ${!compatible_pm[@]}; do
